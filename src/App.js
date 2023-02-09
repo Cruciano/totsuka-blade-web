@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Intro from "./components/intro";
+import Menu from "./components/menu";
+import GameCanvas from "./components/gameCanvas";
+import { useState } from "react";
+import PressToStart from "./components/pressToStart";
 
 function App() {
+  const [mode, setMode] = useState(0);
+
+  const pressToStartHandler = () => {
+    setMode(1);
+    setTimeout(() => setMode(2), 6000);
+  }
+
+  const onPlayHandler = () => {
+    setMode(3);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {mode === 0 && <PressToStart onClick={pressToStartHandler}/>}
+      {mode === 1 && <Intro />}
+      {mode === 2 && <Menu onPlay={onPlayHandler} />}
+      {mode === 3 && <GameCanvas />}
     </div>
   );
 }

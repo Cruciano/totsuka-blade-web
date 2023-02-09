@@ -1,0 +1,53 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: black;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.titleWrapper {
+    position: absolute;
+    top: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.titleWrapper h2 {
+    margin-top: -5px;
+    color: yellow;
+    font-size: 30px;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    text-decoration: underline yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.menu {
+    position: absolute;
+    bottom: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.menuBtn {
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.menuBtn:hover {
+    background-color: rgba(61, 54, 99, 0.6);
+}
+
+
+
