@@ -6,34 +6,46 @@ export default class Player {
     this.y = y;
     this.width = 100;
     this.height = 100;
-    this.dy = 0;
-    this.dx = 500;
+    this.velocity = {
+      dx: 500,
+      dy: 0,
+    }
     this.onGround = false;
+    this.movement = {
+      up: false,
+      right: false,
+      left: false,
+    }
   }
 
-  update(dt, up, right, left) {
+  jump() {
+    this.onGround = false;
+    this.velocity.dy = -1000;
+  }
+
+  update(dt) {
     if(!this.onGround) {
       this.#applyGravity(dt);
 
+      //ToDo: change when the collision logic would be implemented
       if (this.y >= 500) {
-        this.dy = 0;
+        this.velocity.dy = 0;
         this.y = 500;
         this.onGround = true;
       }
+    } else if (this.movement.up) {
+      this.jump();
     }
-    if (up && this.onGround) {
-      this.onGround = false;
-      this.dy = -1000;
-    }
-    if (right) {
-      this.x += this.dx * dt;
-    } else if (left) {
-      this.x -= this.dx * dt;
+
+    if (this.movement.right) {
+      this.x += this.velocity.dx * dt;
+    } else if (this.movement.left) {
+      this.x -= this.velocity.dx * dt;
     }
   }
 
   #applyGravity(dt) {
-    this.dy = this.dy + g * dt;
-    this.y += this.dy * dt;
+    this.velocity.dy = this.velocity.dy + g * dt;
+    this.y += this.velocity.dy * dt;
   }
 }

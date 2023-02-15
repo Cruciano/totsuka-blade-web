@@ -29,9 +29,12 @@ const GameCanvas = () => {
       window.requestAnimationFrame(update);
     }
 
+    game.start();
     update();
+
     return () => {
       window.cancelAnimationFrame(update);
+      game.end();
     }
   }, [])
 
