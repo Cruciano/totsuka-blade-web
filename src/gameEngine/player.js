@@ -4,8 +4,8 @@ export default class Player {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.width = 100;
-    this.height = 100;
+    this.width = 50;
+    this.height = 32;
     this.velocity = {
       dx: 500,
       dy: 0,
@@ -16,6 +16,9 @@ export default class Player {
       right: false,
       left: false,
     }
+
+    this.image = new Image();
+    this.image.src = '/player/0r.png';
   }
 
   jump() {
@@ -39,8 +42,10 @@ export default class Player {
 
     if (this.movement.right) {
       this.x += this.velocity.dx * dt;
+      this.image.src = '/player/0r.png';
     } else if (this.movement.left) {
       this.x -= this.velocity.dx * dt;
+      this.image.src = '/player/0l.png';
     }
   }
 

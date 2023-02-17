@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useWindowSize } from "../../hooks/useWindowSize";
+import styles from './gameCanvas.module.css';
+import BgGif from '../../assets/images/background-game.gif';
 import Game from "../../gameEngine/game";
 
 const GameCanvas = () => {
@@ -21,9 +23,8 @@ const GameCanvas = () => {
       if (timeDelta > 0.25) {
         timeDelta = 0.25;
       }
-
-      c.fillStyle = "#FFF";
-      c.fillRect(0, 0, canvas.width, canvas.height);
+      
+      c.clearRect(0, 0, canvas.width, canvas.height);
 
       game.update(timeDelta);
       window.requestAnimationFrame(update);
@@ -39,7 +40,14 @@ const GameCanvas = () => {
   }, [])
 
   return (
-    <canvas ref={canvasRef} width={width} height={height} />
+    <div className={styles.wrapper}>
+      <img
+        className={styles.background}
+        src={BgGif}
+        alt="background"
+      />
+      <canvas ref={canvasRef} width={width} height={height} />
+    </div>
   );
 };
 
