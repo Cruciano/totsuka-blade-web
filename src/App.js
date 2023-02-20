@@ -5,22 +5,22 @@ import { useState } from "react";
 import PressToStart from "./components/pressToStart";
 
 function App() {
-  const [mode, setMode] = useState(0);
+  const [mode, setMode] = useState(3);
 
-  const pressToStartHandler = () => {
+  const pressToStart = () => {
     setMode(1);
     setTimeout(() => setMode(2), 6000);
   }
 
-  const onPlayHandler = () => {
+  const onPlay = () => {
     setMode(3);
   }
 
   return (
     <div className="App">
-      {mode === 0 && <PressToStart onClick={pressToStartHandler}/>}
+      {mode === 0 && <PressToStart onClick={pressToStart}/>}
       {mode === 1 && <Intro />}
-      {mode === 2 && <Menu onPlay={onPlayHandler} />}
+      {mode === 2 && <Menu onPlay={onPlay} />}
       {mode === 3 && <GameCanvas />}
     </div>
   );

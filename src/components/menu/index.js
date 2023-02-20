@@ -32,12 +32,12 @@ const Menu = ({ onPlay }) => {
           Settings
         </div>
       </div>
-      {/*<Sound
+      <Sound
         url={MenuMusic}
         playStatus={Sound.status.PLAYING}
         loop={true}
         volume={50}
-      />*/}
+      />
     </div>
   );
 };
